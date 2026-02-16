@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics - ShopEase</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="electronics.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>ShopEase</span>
+                </a>
+            </div>
+            
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="electronics.html" class="nav-link active">Electronics</a>
+                <a href="#" class="nav-link">Clothing</a>
+                <a href="#" class="nav-link">Accessories</a>
+                <a href="#" class="nav-link">Home & Living</a>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search electronics...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="user-actions">
+                    <button class="icon-btn" id="wishlistBtn">
+                        <i class="far fa-heart"></i>
+                        <span class="badge" id="wishlistCount">0</span>
+                    </button>
+                    <button class="icon-btn" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" id="cartCount">0</span>
+                    </button>
+                    <button class="icon-btn" id="userBtn">
+                        <i class="far fa-user"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <span><i class="fas fa-chevron-right"></i></span>
+            <span class="current">Electronics</span>
+        </div>
+    </div>
+
+    <!-- Category Banner -->
+    <section class="category-banner">
+        <div class="banner-content">
+            <h1>Electronics</h1>
+            <p>Discover the latest in technology and gadgets</p>
+            <div class="banner-stats">
+                <div class="stat">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">Products</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">25+</span>
+                    <span class="stat-label">Brands</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50%</span>
+                    <span class="stat-label">Max Discount</span>
+                </div>
+            </div>
+        </div>
+        <div class="banner-image">
+            <img src="https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=600" alt="Electronics">
+        </div>
+    </section>
+
+    <!-- Sub Categories -->
+    <section class="sub-categories">
+        <div class="sub-category active" data-subcategory="all">
+            <i class="fas fa-th-large"></i>
+            <span>All Electronics</span>
+        </div>
+        <div class="sub-category" data-subcategory="smartphones">
+            <i class="fas fa-mobile-alt"></i>
+            <span>Smartphones</span>
+        </div>
+        <div class="sub-category" data-subcategory="laptops">
+            <i class="fas fa-laptop"></i>
+            <span>Laptops</span>
+        </div>
+        <div class="sub-category" data-subcategory="audio">
+            <i class="fas fa-headphones"></i>
+            <span>Audio</span>
+        </div>
+        <div class="sub-category" data-subcategory="wearables">
+            <i class="fas fa-clock"></i>
+            <span>Wearables</span>
+        </div>
+        <div class="sub-category" data-subcategory="cameras">
+            <i class="fas fa-camera"></i>
+            <span>Cameras</span>
+        </div>
+        <div class="sub-category" data-subcategory="gaming">
+            <i class="fas fa-gamepad"></i>
+            <span>Gaming</span>
+        </div>
+        <div class="sub-category" data-subcategory="accessories">
+            <i class="fas fa-plug"></i>
+            <span>Accessories</span>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-filter"></i> Filters</h3>
+                <button class="clear-filters" id="clearFilters">Clear All</button>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div class="filter-section">
+                <div class="filter-header" data-toggle="price">
+                    <h4>Price Range</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="filter-content" id="priceFilter">
+                    <div class="price-inputs">
+                        <div class="price-input">
+                            <label>Min</label>
+                            <input type="number" id="minPrice" placeholder="$0" min="0">
+                        </div>
+                        <span class="price-separator">-</span>
+                        <div class="price-input">
+                            <label>Max</label>
+                            <input type="number" id="maxPrice" placeholder="$1000" min="0">
+                        </div>
+                    </div>
+                    <div class="price-slider">
+                        <input type="range" id="priceRange" min="0" max="1000" value="1000">
+                        <div class="price-range-labels">
+                            <span>$0</span>
+                            <span>$1000+</span>
+                        </div>
+                    </div>
+                    <div class="price-presets">
+                        <button class="price-preset" data-min="0" data-max="50">Under $50</button>
+                        <button class="price-preset" data-min="50" data-max="100">$50 - $100</button>
+                        <button class="price-preset" data-min="100" data-max="300">$100 - $300</button>
+                        <button class="price-preset" data-min="300" data-max="500">$300 - $500</button>
+                        <button class="price-preset" data-min="500" data-max="10000">$500+</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brand Filter -->
+            <div class="filter-section">
+                <div class="filter-header" data-toggle="brand">
+                    <h4>Brand</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="filter-content" id="brandFilter">
+                    <div class="filter-search">
+                        <input type="text" placeholder="Search brands..." id="brandSearch">
+                    </div>
+                    <div class="checkbox-list" id="brandList">
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="apple" class="brand-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Apple</span>
+                            <span class="count">(24)</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="samsung" class="brand-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Samsung</span>
+                            <span class="count">(18)</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="sony" class="brand-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Sony</span>
+                            <span class="count">(15)</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="bose" class="brand-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Bose</span>
+                            <span class="count">(12)</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="lg" class="brand-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">LG</span>
+                            <span class="count">(10)</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="dell" class="brand-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Dell</span>
+                            <span class="count">(8)</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="hp" class="brand-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">HP</span>
+                            <span class="count">(9)</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="jbl" class="brand-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">JBL</span>
+                            <span class="count">(7)</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rating Filter -->
+            <div class="filter-section">
+                <div class="filter-header" data-toggle="rating">
+                    <h4>Customer Rating</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="filter-content" id="ratingFilter">
+                    <div class="rating-list">
+                        <label class="rating-item">
+                            <input type="radio" name="rating" value="4" class="rating-radio">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                            <span class="rating-text">& Up</span>
+                        </label>
+                        <label class="rating-item">
+                            <input type="radio" name="rating" value="3" class="rating-radio">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                            <span class="rating-text">& Up</span>
+                        </label>
+                        <label class="rating-item">
+                            <input type="radio" name="rating" value="2" class="rating-radio">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                            <span class="rating-text">& Up</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discount Filter -->
+            <div class="filter-section">
+                <div class="filter-header" data-toggle="discount">
+                    <h4>Discount</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="filter-content" id="discountFilter">
+                    <div class="checkbox-list">
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="10" class="discount-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">10% or more</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="20" class="discount-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">20% or more</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="30" class="discount-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">30% or more</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="50" class="discount-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">50% or more</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Availability Filter -->
+            <div class="filter-section">
+                <div class="filter-header" data-toggle="availability">
+                    <h4>Availability</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="filter-content" id="availabilityFilter">
+                    <div class="checkbox-list">
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="instock" class="availability-checkbox" checked>
+                            <span class="checkmark"></span>
+                            <span class="label-text">In Stock</span>
+                            <span class="count">(142)</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="outofstock" class="availability-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Out of Stock</span>
+                            <span class="count">(8)</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Filter -->
+            <div class="filter-section">
+                <div class="filter-header" data-toggle="features">
+                    <h4>Features</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="filter-content" id="featuresFilter">
+                    <div class="checkbox-list">
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="wireless" class="feature-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Wireless</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="bluetooth" class="feature-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Bluetooth</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="waterproof" class="feature-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Waterproof</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="noisecancelling" class="feature-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Noise Cancelling</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="fastcharging" class="feature-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Fast Charging</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="apply-filters-btn" id="applyFilters">
+                <i class="fas fa-check"></i> Apply Filters
+            </button>
+        </aside>
+
+        <!-- Products Area -->
+        <div class="products-area">
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <div class="toolbar-left">
+                    <button class="filter-toggle" id="filterToggle">
+                        <i class="fas fa-filter"></i> Filters
+                    </button>
+                    <div class="results-count">
+                        Showing <span id="showingCount">1-12</span> of <span id="totalCount">150</span> products
+                    </div>
+                </div>
+                <div class="toolbar-right">
+                    <div class="sort-dropdown">
+                        <label>Sort by:</label>
+                        <select id="sortSelect">
+                            <option value="featured">Featured</option>
+                            <option value="newest">Newest</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="bestselling">Best Selling</option>
+                        </select>
+                    </div>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid" id="gridViewBtn">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="view-btn" data-view="list" id="listViewBtn">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Filters -->
+            <div class="active-filters" id="activeFilters">
+                <!-- Active filter tags will be inserted here -->
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded dynamically -->
+            </div>
+
+            <!-- Loading Spinner -->
+            <div class="loading-spinner" id="loadingSpinner">
+                <div class="spinner"></div>
+                <p>Loading products...</p>
+            </div>
+
+            <!-- No Results -->
+            <div class="no-results" id="noResults">
+                <i class="fas fa-search"></i>
+                <h3>No products found</h3>
+                <p>Try adjusting your filters or search terms</p>
+                <button class="btn btn-primary" id="resetFiltersBtn">Reset Filters</button>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <button class="page-btn" id="prevPage" disabled>
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div class="page-numbers" id="pageNumbers">
+                    <button class="page-num active">1</button>
+                    <button class="page-num">2</button>
+                    <button class="page-num">3</button>
+                    <button class="page-num">4</button>
+                    <span class="page-dots">...</span>
+                    <button class="page-num">13</button>
+                </div>
+                <button class="page-btn" id="nextPage">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Featured Deals Section -->
+    <section class="featured-deals">
+        <div class="section-header">
+            <h2>🔥 Hot Deals on Electronics</h2>
+            <a href="#" class="view-all">View All Deals <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="deals-slider" id="dealsSlider">
+            <div class="deal-card">
+                <div class="deal-badge">-40%</div>
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=300" alt="Smart Watch">
+                <div class="deal-info">
+                    <h4>Smart Watch Series 5</h4>
+                    <div class="deal-prices">
+                        <span class="deal-price">$179.99</span>
+                        <span class="deal-original">$299.99</span>
+                    </div>
+                    <div class="deal-timer">
+                        <i class="fas fa-clock"></i>
+                        <span>Ends in: 05:32:18</span>
+                    </div>
+                </div>
+            </div>
+            <div class="deal-card">
+                <div class="deal-badge">-35%</div>
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300" alt="Headphones">
+                <div class="deal-info">
+                    <h4>Pro Wireless Headphones</h4>
+                    <div class="deal-prices">
+                        <span class="deal-price">$129.99</span>
+                        <span class="deal-original">$199.99</span>
+                    </div>
+                    <div class="deal-timer">
+                        <i class="fas fa-clock"></i>
+                        <span>Ends in: 12:45:30</span>
+                    </div>
+                </div>
+            </div>
+            <div class="deal-card">
+                <div class="deal-badge">-25%</div>
+                <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=300" alt="Laptop">
+                <div class="deal-info">
+                    <h4>Ultra Slim Laptop 15"</h4>
+                    <div class="deal-prices">
+                        <span class="deal-price">$899.99</span>
+                        <span class="deal-original">$1199.99</span>
+                    </div>
+                    <div class="deal-timer">
+                        <i class="fas fa-clock"></i>
+                        <span>Ends in: 08:15:45</span>
+                    </div>
+                </div>
+            </div>
+            <div class="deal-card">
+                <div class="deal-badge">-50%</div>
+                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=300" alt="Earbuds">
+                <div class="deal-info">
+                    <h4>True Wireless Earbuds</h4>
+                    <div class="deal-prices">
+                        <span class="deal-price">$49.99</span>
+                        <span class="deal-original">$99.99</span>
+                    </div>
+                    <div class="deal-timer">
+                        <i class="fas fa-clock"></i>
+                        <span>Ends in: 03:22:10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently Viewed -->
+    <section class="recently-viewed">
+        <div class="section-header">
+            <h2>Recently Viewed</h2>
+            <button class="clear-history">Clear History</button>
+        </div>
+        <div class="recently-viewed-grid" id="recentlyViewedGrid">
+            <!-- Recently viewed products will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Compare Products -->
+    <div class="compare-bar" id="compareBar">
+        <div class="compare-content">
+            <div class="compare-items" id="compareItems">
+                <!-- Compare items will be added here -->
+            </div>
+            <div class="compare-actions">
+                <span class="compare-count"><span id="compareCount">0</span>/4 products</span>
+                <button class="btn btn-primary" id="compareBtn" disabled>Compare Now</button>
+                <button class="btn btn-outline" id="clearCompare">Clear All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>ShopEase</span>
+                </div>
+                <p>Your one-stop destination for all your shopping needs. Quality products, great prices, and excellent service.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Order Tracking</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Shopping St, NY 10001</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> support@shopease.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ShopEase. All rights reserved.</p>
+            <div class="payment-methods">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-paypal"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+            <button class="close-btn" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal:</span>
+                <span id="cartSubtotal">$0.00</span>
+            </div>
+            <div class="cart-shipping">
+                <span>Shipping:</span>
+                <span id="cartShipping">$0.00</span>
+            </div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</button>
+            <button class="btn btn-outline btn-block" id="continueShoppingBtn">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+            <div class="modal-body">
+                <div class="modal-gallery">
+                    <div class="main-image">
+                        <img id="modalMainImage" src="" alt="">
+                    </div>
+                    <div class="thumbnail-images" id="modalThumbnails">
+                        <!-- Thumbnails will be loaded dynamically -->
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <span class="modal-brand" id="modalBrand"></span>
+                    <h2 id="modalTitle"></h2>
+                    <div class="modal-rating" id="modalRating"></div>
+                    <p class="modal-description" id="modalDescription"></p>
+                    
+                    <div class="modal-specs" id="modalSpecs">
+                        <!-- Specs will be loaded dynamically -->
+                    </div>
+                    
+                    <div class="modal-price">
+                        <span class="current-price" id="modalPrice"></span>
+                        <span class="original-price" id="modalOriginalPrice"></span>
+                        <span class="discount-percent" id="modalDiscount"></span>
+                    </div>
+                    
+                    <div class="modal-stock" id="modalStock">
+                        <i class="fas fa-check-circle"></i>
+                        <span>In Stock</span>
+                    </div>
+                    
+                    <div class="modal-options">
+                        <div class="color-options" id="colorOptions">
+                            <!-- Color options will be loaded dynamically -->
+                        </div>
+                        <div class="quantity-selector">
+                            <label>Quantity:</label>
+                            <button class="qty-btn minus"><i class="fas fa-minus"></i></button>
+                            <input type="number" value="1" min="1" id="modalQuantity">
+                            <button class="qty-btn plus"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="btn btn-primary btn-large" id="modalAddToCart">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="btn btn-secondary" id="modalBuyNow">
+                            <i class="fas fa-bolt"></i> Buy Now
+                        </button>
+                    </div>
+                    
+                    <div class="modal-extras">
+                        <button class="extra-btn" id="modalWishlist">
+                            <i class="far fa-heart"></i> Add to Wishlist
+                        </button>
+                        <button class="extra-btn" id="modalCompare">
+                            <i class="fas fa-exchange-alt"></i> Compare
+                        </button>
+                        <button class="extra-btn" id="modalShare">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                    </div>
+                    
+                    <div class="modal-features">
+                        <div class="feature-item">
+                            <i class="fas fa-truck"></i>
+                            <span>Free shipping over $50</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-undo"></i>
+                            <span>30-day returns</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>2-year warranty</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Item added to cart!</span>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="electronics.js"></script>
+</body>
+</html>
